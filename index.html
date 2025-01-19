@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="initial-scale=1.0" />
+    <title>Dynamic Menu Interaction</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Neue+Montreal:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Neue Montreal", sans-serif;
+        overflow-y: scroll;
+        height: 100vh;
+        background-color: #f4f4f4;
+        position: relative;
+      }
+
+      /* Hide Scrollbar but keep functionality */
+      body::-webkit-scrollbar {
+        width: 0px;
+        height: 0px;
+      }
+
+      body::-webkit-scrollbar-thumb {
+        background: transparent;
+      }
+
+      body::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      /* Vertical Progress Bar */
+      #vertical-progress-bar {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 10px;
+        height: 100%;
+        background-color: #ddd;
+        z-index: 9998;
+      }
+
+      #progress {
+        width: 100%;
+        height: 0;
+        background-color: black;
+        transition: height 0.1s ease;
+      }
+
+      #loading-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: grey;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 9999;
+      }
+
+      #loading-bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        background-color: black;
+        width: 0%;
+        z-index: 2;
+        transition: width 0.1s linear;
+      }
+
+      #percentage-text {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        color: white;
+        font-size: 15.2rem;
+        font-weight: 400;
+        letter-spacing: -0.04em;
+        line-height: 1;
+        z-index: 3;
+      }
+
+      #first-row {
+        display: flex;
+        width: 100%;
+        height: 100vh;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+      }
+
+      #first-row h1 {
+        font-size: 4rem;
+        font-weight: 400;
+      }
+
+      #image-container {
+        width: 35%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: black;
+        overflow: hidden;
+        z-index: 1;
+        opacity: 0;
+      }
+
+      #image-container img {
+        width: 100%;
+        height: auto;
+      }
+
+      #second-row {
+        display: none;
+        width: 100%;
+        height: 100vh;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      #skills {
+        width: 65%;
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        background-color: black;
+        height: 100%;
+      }
+
+      #skills h2 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        color: white;
+      }
+
+      #skills .content {
+        font-size: 1.5rem;
+        color: white;
+      }
+
+      #menu {
+        width: 35%;
+        color: black;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        height: 100%;
+      }
+
+      .menu-item {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .menu-item:hover {
+        background-color: #ddd;
+      }
+
+      .menu-item.active {
+        font-weight: bold;
+        text-decoration: underline;
+      }
+
+      #contact-section {
+        background-color: #f9f9f9;
+        text-align: center;
+        padding: 40px 20px;
+        border-top: 1px solid #ccc;
+      }
+
+      #contact-section h2 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+        color: #333;
+      }
+
+      #contact-section p {
+        font-size: 1.2rem;
+        color: #555;
+        margin: 10px 0;
+      }
+
+      #contact-section a {
+        color: #007bff;
+        text-decoration: none;
+      }
+
+      #contact-section a:hover {
+        text-decoration: underline;
+      }
+
+      footer {
+        width: 100%;
+        background-color: #222;
+        color: white;
+        text-align: center;
+        padding: 20px 0;
+      }
+
+      footer div {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 10px;
+      }
+
+      footer a {
+        color: white;
+        text-decoration: none;
+      }
+
+      footer a:hover {
+        text-decoration: underline;
+      }
+
+      #dynamic-text {
+        font-size: 2rem;
+        font-weight: 400;
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Vertical Progress Bar -->
+    <div id="vertical-progress-bar">
+      <div id="progress"></div>
+    </div>
+
+    <div id="loading-screen">
+      <div id="loading-bar"></div>
+      <div id="percentage-text">0</div>
+    </div>
+
+    <div id="first-row">
+      <div id="text-container">
+        <h1>Srikar Reddy</h1>
+        <h2>I am a <span id="dynamic-text"></span></h2>
+      </div>
+
+      <div id="image-container">
+        <img src="/mnt/data/srikar_img.jpg" alt="Developer Image" />
+      </div>
+    </div>
+
+    <div id="second-row">
+      <div id="skills">
+        <h2>Technical Skills</h2>
+        <div class="content">HTML, CSS, JavaScript, React, Node.js</div>
+      </div>
+
+      <div id="menu">
+        <div
+          class="menu-item active"
+          data-content="Technical Skills: HTML, CSS, JavaScript, React, Node.js"
+        >
+          Skills
+        </div>
+        <div
+          class="menu-item"
+          data-content="Experience: 5 years in Full Stack Development, 3 years in Cloud Deployment"
+        >
+          Experience
+        </div>
+        <div
+          class="menu-item"
+          data-content="Projects: E-commerce Website, Portfolio Website, Chat Application"
+        >
+          Projects
+        </div>
+        <div
+          class="menu-item"
+          data-content="Contact: Email - developer@example.com, Phone - 1234567890"
+        >
+          Contact
+        </div>
+        <div
+          class="menu-item"
+          data-content="Blog: Latest trends in JavaScript, Web Development Tips"
+        >
+          Blog
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div id="contact-section">
+      <h2>Contact Me</h2>
+      <p>Email: <a href="mailto:sr@srikarreddy.xyz">sr@srikarreddy.xyz</a></p>
+      <p>Phone: <a href="tel:+9515885446">9515885446</a></p>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <p>Connect with me:</p>
+      <div>
+        <a href="https://www.linkedin.com/in/your-profile" target="_blank"
+          >LinkedIn</a
+        >
+        <a href="https://github.com/your-username" target="_blank">GitHub</a>
+        <a href="https://twitter.com/your-username" target="_blank">Twitter</a>
+        <a href="https://www.reddit.com/user/your-username" target="_blank"
+          >Reddit</a
+        >
+      </div>
+    </footer>
+
+    <script>
+      window.addEventListener("load", () => {
+        const percentageText = document.getElementById("percentage-text");
+        const loadingBar = document.getElementById("loading-bar");
+        const imageContainer = document.getElementById("image-container");
+        const firstRow = document.getElementById("first-row");
+        const secondRow = document.getElementById("second-row");
+
+        let progress = 0;
+        const interval = setInterval(() => {
+          if (progress <= 100) {
+            percentageText.textContent = `${progress}`;
+            loadingBar.style.width = `${(progress / 100) * 65}%`;
+            progress += 1;
+          }
+
+          if (progress === 100) {
+            imageContainer.style.opacity = "1";
+            setTimeout(() => {
+              document.getElementById("loading-screen").style.display = "none";
+              firstRow.style.opacity = "1";
+              firstRow.style.transition = "opacity 1s ease";
+              secondRow.style.display = "flex";
+              document.body.style.overflowY = "scroll";
+            }, 500);
+          }
+
+          if (progress >= 100) {
+            clearInterval(interval);
+          }
+        }, 50);
+
+        const dynamicText = document.getElementById("dynamic-text");
+        const texts = ["Full Stack Developer", "Software Engineer"];
+        let currentTextIndex = 0;
+        let typingSpeed = 100;
+        let erasingSpeed = 50;
+
+        function typeAndEraseText(element, text, callback) {
+          let i = 0;
+          let isErasing = false;
+
+          function type() {
+            if (isErasing) {
+              element.textContent = text.slice(0, i);
+              i--;
+              if (i < 0) {
+                isErasing = false;
+                setTimeout(callback, 500);
+              } else {
+                setTimeout(type, erasingSpeed);
+              }
+            } else {
+              element.textContent = text.slice(0, i + 1);
+              i++;
+              if (i < text.length) {
+                setTimeout(type, typingSpeed);
+              } else {
+                setTimeout(() => {
+                  isErasing = true;
+                  type();
+                }, 1000);
+              }
+            }
+          }
+          type();
+        }
+
+        function cycleText() {
+          const newText = texts[currentTextIndex];
+          currentTextIndex = (currentTextIndex + 1) % texts.length;
+          typeAndEraseText(dynamicText, newText, () => {
+            setTimeout(cycleText, 500);
+          });
+        }
+
+        cycleText();
+
+        const menuItems = document.querySelectorAll(".menu-item");
+        const skillsContent = document.querySelector("#skills .content");
+
+        menuItems.forEach((item) => {
+          item.addEventListener("click", () => {
+            menuItems.forEach((menu) => menu.classList.remove("active"));
+            item.classList.add("active");
+            skillsContent.textContent = item.getAttribute("data-content");
+          });
+        });
+
+        // Update vertical progress bar on scroll
+        window.addEventListener("scroll", () => {
+          const docHeight =
+            document.documentElement.scrollHeight - window.innerHeight;
+          const scrollPosition = window.scrollY;
+          const progressPercentage = (scrollPosition / docHeight) * 100;
+          document.getElementById(
+            "progress"
+          ).style.height = `${progressPercentage}%`;
+        });
+      });
+    </script>
+  </body>
+</html>
