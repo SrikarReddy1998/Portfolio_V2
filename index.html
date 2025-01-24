@@ -2,425 +2,416 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="initial-scale=1.0" />
-    <title>Dynamic Menu Interaction</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Portfolio</title>
     <link
-      href="https://fonts.googleapis.com/css2?family=Neue+Montreal:wght@300;400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Neue+Montreal:wght@400;600&display=swap"
       rel="stylesheet"
     />
-
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      body {
-        font-family: "Neue Montreal", sans-serif;
-        overflow-y: scroll;
-        height: 100vh;
-        background-color: #f4f4f4;
-        position: relative;
-      }
-
-      /* Hide Scrollbar but keep functionality */
-      body::-webkit-scrollbar {
-        width: 0px;
-        height: 0px;
-      }
-
-      body::-webkit-scrollbar-thumb {
-        background: transparent;
-      }
-
-      body::-webkit-scrollbar-track {
-        background: transparent;
-      }
-
-      /* Vertical Progress Bar */
-      #vertical-progress-bar {
-        position: fixed;
-        top: 0;
-        right: 0;
-        width: 10px;
-        height: 100%;
-        background-color: #ddd;
-        z-index: 9998;
-      }
-
-      #progress {
-        width: 100%;
-        height: 0;
-        background-color: black;
-        transition: height 0.1s ease;
-      }
-
-      #loading-screen {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: grey;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        z-index: 9999;
-      }
-
-      #loading-bar {
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100%;
-        background-color: black;
-        width: 0%;
-        z-index: 2;
-        transition: width 0.1s linear;
-      }
-
-      #percentage-text {
-        position: absolute;
-        bottom: 10px;
-        left: 10px;
-        color: white;
-        font-size: 15.2rem;
-        font-weight: 400;
-        letter-spacing: -0.04em;
-        line-height: 1;
-        z-index: 3;
-      }
-
-      #first-row {
-        display: flex;
-        width: 100%;
-        height: 100vh;
-        justify-content: space-between;
-        align-items: center;
-        position: relative;
-      }
-
-      #first-row h1 {
-        font-size: 4rem;
-        font-weight: 400;
-      }
-
-      #image-container {
-        width: 35%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: black;
-        overflow: hidden;
-        z-index: 1;
-        opacity: 0;
-      }
-
-      #image-container img {
-        width: 100%;
-        height: auto;
-      }
-
-      #second-row {
-        display: none;
-        width: 100%;
-        height: 100vh;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      #skills {
-        width: 65%;
-        display: flex;
-        flex-direction: column;
-        padding: 20px;
-        background-color: black;
-        height: 100%;
-      }
-
-      #skills h2 {
-        font-size: 2.5rem;
-        margin-bottom: 20px;
-        color: white;
-      }
-
-      #skills .content {
-        font-size: 1.5rem;
-        color: white;
-      }
-
-      #menu {
-        width: 35%;
-        color: black;
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: flex-start;
-        height: 100%;
-      }
-
-      .menu-item {
-        font-size: 1.5rem;
-        margin-bottom: 20px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-      }
-
-      .menu-item:hover {
-        background-color: #ddd;
-      }
-
-      .menu-item.active {
-        font-weight: bold;
-        text-decoration: underline;
-      }
-
-      #contact-section {
-        background-color: #f9f9f9;
-        text-align: center;
-        padding: 40px 20px;
-        border-top: 1px solid #ccc;
-      }
-
-      #contact-section h2 {
-        font-size: 2rem;
-        margin-bottom: 20px;
-        color: #333;
-      }
-
-      #contact-section p {
-        font-size: 1.2rem;
-        color: #555;
-        margin: 10px 0;
-      }
-
-      #contact-section a {
-        color: #007bff;
-        text-decoration: none;
-      }
-
-      #contact-section a:hover {
-        text-decoration: underline;
-      }
-
-      footer {
-        width: 100%;
-        background-color: #222;
-        color: white;
-        text-align: center;
-        padding: 20px 0;
-      }
-
-      footer div {
-        display: flex;
-        justify-content: center;
-        gap: 15px;
-        margin-top: 10px;
-      }
-
-      footer a {
-        color: white;
-        text-decoration: none;
-      }
-
-      footer a:hover {
-        text-decoration: underline;
-      }
-
-      #dynamic-text {
-        font-size: 2rem;
-        font-weight: 400;
-        display: inline-block;
-      }
-    </style>
+    <link rel="stylesheet" href="style.css" />
+    <!-- Font Awesome CDN -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
   </head>
+
   <body>
-    <!-- Vertical Progress Bar -->
-    <div id="vertical-progress-bar">
-      <div id="progress"></div>
-    </div>
+    <div id="scroll-progress"></div>
 
-    <div id="loading-screen">
-      <div id="loading-bar"></div>
-      <div id="percentage-text">0</div>
-    </div>
-
-    <div id="first-row">
-      <div id="text-container">
-        <h1>Srikar Reddy</h1>
-        <h2>I am a <span id="dynamic-text"></span></h2>
-      </div>
-
-      <div id="image-container">
-        <img src="/mnt/data/srikar_img.jpg" alt="Developer Image" />
-      </div>
-    </div>
-
-    <div id="second-row">
-      <div id="skills">
-        <h2>Technical Skills</h2>
-        <div class="content">HTML, CSS, JavaScript, React, Node.js</div>
-      </div>
-
-      <div id="menu">
-        <div
-          class="menu-item active"
-          data-content="Technical Skills: HTML, CSS, JavaScript, React, Node.js"
-        >
-          Skills
+    <section id="intro">
+      <div class="left">
+        <h1 id="name">Srikar Reddy C</h1>
+        <div class="dynamic-texts">
+          I'm a
+          <h2 id="dynamic-text"></h2>
         </div>
-        <div
-          class="menu-item"
-          data-content="Experience: 5 years in Full Stack Development, 3 years in Cloud Deployment"
-        >
-          Experience
-        </div>
-        <div
-          class="menu-item"
-          data-content="Projects: E-commerce Website, Portfolio Website, Chat Application"
-        >
-          Projects
-        </div>
-        <div
-          class="menu-item"
-          data-content="Contact: Email - developer@example.com, Phone - 1234567890"
-        >
-          Contact
-        </div>
-        <div
-          class="menu-item"
-          data-content="Blog: Latest trends in JavaScript, Web Development Tips"
-        >
-          Blog
+        <!-- Social Icons Below Dynamic Text -->
+        <div class="social-icons">
+          <a
+            href="https://github.com/SrikarReddy1998"
+            target="_blank"
+            class="social-icon"
+          >
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="mailto:srikar@example.com" class="social-icon">
+            <i class="fas fa-envelope"></i>
+          </a>
+          <a
+            href="https://www.linkedin.com/in/-srikarreddy/"
+            target="_blank"
+            class="social-icon"
+          >
+            <i class="fab fa-linkedin"></i>
+          </a>
         </div>
       </div>
-    </div>
+      <div class="right">
+        <img src="profile.jpg" alt="Profile Picture" id="profile-img" />
+      </div>
+    </section>
 
-    <!-- Contact Section -->
-    <div id="contact-section">
-      <h2>Contact Me</h2>
-      <p>Email: <a href="mailto:sr@srikarreddy.xyz">sr@srikarreddy.xyz</a></p>
-      <p>Phone: <a href="tel:+9515885446">9515885446</a></p>
-    </div>
+    <!-- Second Section -->
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="skills-container">
+        <div class="skills-category">
+          <h3>Languages & Frameworks</h3>
+          <ul>
+            <li>JavaScript (Node.js, Angular, React, Bun.js)</li>
+            <li>GoLang</li>
+            <li>C</li>
+            <li>C++</li>
+            <li>HTML, CSS, EJS, Handlebars</li>
+            <li>Python (NumPy, Sklearn, Matplotlib, Machine Learning)</li>
+            <li>Java (Android, JPA)</li>
+            <li>Bash</li>
+            <li>React Native</li>
+            <li>C# (Dot Net Core)</li>
+            <li>YAML, JSON</li>
+            <li>TypeScript</li>
+            <li>Dart</li>
+            <li>Flask</li>
+            <li>ThreeJS</li>
+            <li>Flutter</li>
+          </ul>
+        </div>
+        <div class="skills-category">
+          <h3>Tools & Databases</h3>
+          <ul>
+            <li>NodeJS</li>
+            <li>MongoDB</li>
+            <li>Express</li>
+            <li>MySQL</li>
+            <li>Redis</li>
+            <li>Firebase</li>
+            <li>Web Sockets</li>
+            <li>Git & Github</li>
+            <li>GitHub Actions</li>
+            <li>Jira, Confluence</li>
+            <li>Postman</li>
+            <li>VSCode, CLion, IntelliJ IDEA, PyCharm</li>
+            <li>SSH, SCP, Systemd, etc.</li>
+          </ul>
+        </div>
+        <div class="skills-category">
+          <h3>Cloud Technologies</h3>
+          <ul>
+            <li>Linux (Ubuntu, Fedora, RHEL, Debian)</li>
+            <li>
+              AWS (EC2, S3, IAM, ECS, RDS, Lambda, ALB, CloudWatch, CloudFront)
+            </li>
+            <li>GCP (Cloud Functions, Cloud Storage, Cloud Runner)</li>
+            <li>Docker, Docker Compose, Kubernetes</li>
+            <li>Microservices, Event Brokers (MQTT, Kafka)</li>
+            <li>Nginx</li>
+            <li>GRPC</li>
+            <li>CI/CD Pipelines</li>
+            <li>Continuous Testing</li>
+            <li>Digital Ocean</li>
+            <li>Vercel</li>
+            <li>Netlify</li>
+            <li>Figma</li>
+            <li>Adobe XD</li>
+            <li>Jenkins</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <ul>
+        <li>
+          <a href="https://medsync.srikarreddy.xyz" target="_blank">
+            <strong style="color: #007bff">Medsync Care</strong>
+          </a>
+          <p>
+            An open-source healthcare management system designed to streamline
+            the process of scheduling, tracking, and managing medical
+            appointments. It simplifies healthcare workflows for both patients
+            and providers, offering a user-friendly interface and modern
+            functionality.
+          </p>
+          <p>
+            <strong style="color: #28a745">Tech used:</strong> React, Node.js,
+            Express, MongoDB
+          </p>
+        </li>
+
+        <li>
+          <a href="#" target="_blank">
+            <strong style="color: #007bff"
+              >Homelab Setup with Raspberry Pi</strong
+            >
+          </a>
+          <p>
+            Set up a secure homelab using Raspberry Pi, employing Twingate to
+            enable remote access without the need for a VPN. Integrated the QUIK
+            protocol for efficient user access control, ensuring a seamless and
+            secure setup for hosting personal projects.
+          </p>
+          <p>
+            <strong style="color: #28a745">Tech used:</strong> Raspberry Pi,
+            Twingate, QUIK Protocol, Docker
+          </p>
+        </li>
+
+        <li>
+          <a href="#" target="_blank">
+            <strong style="color: #007bff"
+              >Micro Frontend with Module Federation</strong
+            >
+          </a>
+          <p>
+            Implemented a Micro Frontend architecture to integrate Angular
+            (using Module Federation) and React frameworks (using Native
+            Federation) into a legacy application. This approach enabled better
+            runtime dependency sharing, reduced bundle sizes, and improved
+            scalability for enterprise applications.
+          </p>
+          <p><strong style="color: #28a745">Key Features:</strong></p>
+          <ul>
+            <li>Optimized performance with reduced build sizes.</li>
+            <li>
+              Improved runtime sharing of dependencies between Angular and
+              React.
+            </li>
+            <li>
+              Enhanced scalability and modular maintainability for
+              enterprise-scale systems.
+            </li>
+          </ul>
+          <p>
+            <strong style="color: #28a745">Tech used:</strong> Angular, React,
+            Webpack Module Federation
+          </p>
+        </li>
+
+        <li>
+          <a href="#" target="_blank">
+            <strong style="color: #007bff">Dynamic DNS Updater</strong>
+          </a>
+          <p>
+            Developed a system that automatically updates a Dynamic DNS (DDNS)
+            record whenever the public IP address changes. Ensured uninterrupted
+            access to services hosted on a dynamic IP setup with efficient error
+            handling and automated retries.
+          </p>
+          <p><strong style="color: #28a745">Key Features:</strong></p>
+          <ul>
+            <li>Periodic polling to detect changes in external IP address.</li>
+            <li>Automated updates to DNS provider via API calls.</li>
+            <li>
+              Robust error handling and retry mechanisms for seamless operation.
+            </li>
+          </ul>
+          <p>
+            <strong style="color: #28a745">Tech used:</strong> Python, REST
+            APIs, Bash, Cron Jobs
+          </p>
+        </li>
+
+        <li>
+          <a href="#" target="_blank">
+            <strong style="color: #007bff"
+              >Tactile Code Predictor using SVM and KNN Algorithm</strong
+            >
+          </a>
+          <p>
+            Designed tactile code recognition models using SVM and KNN,
+            leveraging Kaggle datasets and real-life tactile images for
+            training. The project aims to enhance communication for visually
+            impaired individuals, enabling interpretation of tactile signs for
+            those unfamiliar with ASL.
+          </p>
+          <p>
+            <strong style="color: #28a745">Tech used:</strong> Python,
+            TensorFlow, MongoDB, Keras, SciKit-Learn, OpenCV, Matplotlib, Pandas
+          </p>
+        </li>
+
+        <li>
+          <a href="#" target="_blank">
+            <strong style="color: #007bff"
+              >Sentimental Analysis using Logistic Regression</strong
+            >
+          </a>
+          <p>
+            Conducted sentiment analysis of text data to determine emotional
+            tones within written statements. Trained models using a
+            dictionary-based clustering technique and published findings in
+            IJERA.
+          </p>
+          <p>
+            <strong style="color: #28a745">Tech used:</strong> Python,
+            TensorFlow, SK-Learn, Keras, Matplotlib, Pandas
+          </p>
+        </li>
+
+        <li>
+          <a href="#" target="_blank">
+            <strong style="color: #007bff"
+              >Smart Phone Manufacturer System</strong
+            >
+          </a>
+          <p>
+            Developed an Android and web-based application that provides
+            detailed information on mobile phones, including manufacturing
+            details, seller information, and specifications. Delivered a
+            comprehensive tool for accessing smartphone data efficiently.
+          </p>
+          <p>
+            <strong style="color: #28a745">Tech used:</strong> Flutter, Dart,
+            Node.js, Express, GetX Architecture
+          </p>
+        </li>
+      </ul>
+    </section>
+
+    <section id="experience">
+      <h2>Experience</h2>
+      <div class="experience-item">
+        <h3>Reliance Jio (June 2022 – Present)</h3>
+        <p><strong>Role:</strong> Software Developer</p>
+        <div>
+          <h4>Project - People First v2 (Internal HR Platform Revamp)</h4>
+          <p>
+            An all-in-one HR platform for Reliance Industries (including Retail,
+            Hydrocarbons, JIO), using microfront-end technology with Module
+            Federation. It's containerized to optimize various employee needs
+            like travel, payroll, leave management, approvals, reimbursements,
+            self-service, and more.
+          </p>
+          <p>
+            <strong>Tech Used:</strong> Angular 16, React, Redux, TypeScript,
+            Node.js, Express, Kubernetes, Docker, Jenkins, Module Federation -
+            Web Architecture, SonarQube.
+          </p>
+          <p><strong>Role:</strong> Module Lead, Mentor (Team Size: 18)</p>
+        </div>
+        <div>
+          <h4>Project - Sustainability First (BRSR Report)</h4>
+          <p>
+            An internal tool used by Reliance subsidiaries to manage and
+            aggregate sustainable goals. It helps track key metrics like stock
+            performance, employee count, gender representation, and
+            environmental risks. Subsidiaries input quarterly data, which
+            Organizational managers review and finalize before being sent to
+            SEBI at the end of the financial year. The tool ensures transparency
+            and stakeholder interests are addressed.
+          </p>
+          <p>
+            <strong>Tech Used:</strong> AngularJS, HTML, Node.js, Express,
+            SonarQube, Jenkins in Microfront-end Architecture.
+          </p>
+          <p><strong>Role:</strong> Member (Team Size: 10)</p>
+        </div>
+        <div>
+          <h4>Project - People First v1 (HR Platform) - Android & iOS</h4>
+          <p>
+            A Flutter-based mobile app using GetX architecture that meets all
+            employees' HR needs. It includes modules for benefits, travel,
+            guesthouse bookings, payroll, and approvals, making it easy for
+            employees to access necessary resources. The app also provides push
+            notifications for attendance reminders and updates on organizational
+            news.
+          </p>
+          <p><strong>Tech Used:</strong> Flutter, Dart, Node.js, Express.</p>
+          <p><strong>Role:</strong> Graduate Engineering Trainee</p>
+        </div>
+      </div>
+
+      <div class="experience-item">
+        <h3>HRBuddy (Personal Project)</h3>
+        <p>
+          Developed a chatbot using Next.js SSR, embedded via iframe, which
+          allows users to access all HR activities and employee requirements
+          through a single chat interface. The chatbot simplifies employee
+          interactions with HR services, improving efficiency and user
+          experience.
+        </p>
+      </div>
+    </section>
+
+    <!-- Fourth Section -->
+    <section id="homelab-blog">
+      <h2>My Blog: Building a Secure Homelab with Twingate</h2>
+      <div class="blog-container">
+        <div class="blog-image">
+          <img
+            src="https://via.placeholder.com/400x300"
+            alt="Homelab setup image"
+          />
+        </div>
+        <div class="blog-description">
+          <p>
+            Setting up a homelab is an exciting way to explore and learn about
+            technology. In my latest blog, I dive deep into building a secure
+            and efficient homelab using Twingate. This guide walks you through
+            the process of enabling remote access without relying on traditional
+            VPNs, ensuring security and simplicity.
+          </p>
+          <p>
+            Discover how to configure Twingate, manage access controls using the
+            QUIK protocol, and leverage a Raspberry Pi for the ultimate
+            lightweight and cost-effective server. Learn how this setup allows
+            seamless access to services while prioritizing user management and
+            scalability.
+          </p>
+          <p>
+            <a
+              href="https://hashnode.com/@SrikarReddy"
+              target="_blank"
+              class="blog-link"
+              >Read the full blog →</a
+            >
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Fifth Section -->
+    <section id="contact">
+      <h2>Contact Information</h2>
+      <div class="contact-item">
+        <i class="fas fa-envelope"></i>
+        <a href="mailto:sr@srikarreddy.xyz">sr@srikarreddy.xyz</a>
+      </div>
+      <div class="contact-item">
+        <i class="fas fa-phone"></i>
+        <a href="tel:+919515885446">+91 9515885446</a>
+      </div>
+    </section>
 
     <!-- Footer -->
     <footer>
-      <p>Connect with me:</p>
-      <div>
-        <a href="https://www.linkedin.com/in/your-profile" target="_blank"
-          >LinkedIn</a
-        >
-        <a href="https://github.com/your-username" target="_blank">GitHub</a>
-        <a href="https://twitter.com/your-username" target="_blank">Twitter</a>
-        <a href="https://www.reddit.com/user/your-username" target="_blank"
-          >Reddit</a
-        >
-      </div>
+      <ul>
+        <li>
+          <a href="https://github.com/SrikarReddy1998" target="_blank"
+            ><i class="fab fa-github"></i> GitHub</a
+          >
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/-srikarreddy/" target="_blank"
+            ><i class="fab fa-linkedin"></i> LinkedIn</a
+          >
+        </li>
+        <li>
+          <a href="https://x.com/SrikarReddy98" target="_blank"
+            ><i class="fab fa-twitter"></i> X (Twitter)</a
+          >
+        </li>
+        <li>
+          <a href="https://hashnode.com/@SrikarReddy" target="_blank"
+            ><i class="fas fa-book"></i> Blog</a
+          >
+        </li>
+        <!-- Book Icon for Blog -->
+      </ul>
     </footer>
 
-    <script>
-      window.addEventListener("load", () => {
-        const percentageText = document.getElementById("percentage-text");
-        const loadingBar = document.getElementById("loading-bar");
-        const imageContainer = document.getElementById("image-container");
-        const firstRow = document.getElementById("first-row");
-        const secondRow = document.getElementById("second-row");
-
-        let progress = 0;
-        const interval = setInterval(() => {
-          if (progress <= 100) {
-            percentageText.textContent = `${progress}`;
-            loadingBar.style.width = `${(progress / 100) * 65}%`;
-            progress += 1;
-          }
-
-          if (progress === 100) {
-            imageContainer.style.opacity = "1";
-            setTimeout(() => {
-              document.getElementById("loading-screen").style.display = "none";
-              firstRow.style.opacity = "1";
-              firstRow.style.transition = "opacity 1s ease";
-              secondRow.style.display = "flex";
-              document.body.style.overflowY = "scroll";
-            }, 500);
-          }
-
-          if (progress >= 100) {
-            clearInterval(interval);
-          }
-        }, 50);
-
-        const dynamicText = document.getElementById("dynamic-text");
-        const texts = ["Full Stack Developer", "Software Engineer"];
-        let currentTextIndex = 0;
-        let typingSpeed = 100;
-        let erasingSpeed = 50;
-
-        function typeAndEraseText(element, text, callback) {
-          let i = 0;
-          let isErasing = false;
-
-          function type() {
-            if (isErasing) {
-              element.textContent = text.slice(0, i);
-              i--;
-              if (i < 0) {
-                isErasing = false;
-                setTimeout(callback, 500);
-              } else {
-                setTimeout(type, erasingSpeed);
-              }
-            } else {
-              element.textContent = text.slice(0, i + 1);
-              i++;
-              if (i < text.length) {
-                setTimeout(type, typingSpeed);
-              } else {
-                setTimeout(() => {
-                  isErasing = true;
-                  type();
-                }, 1000);
-              }
-            }
-          }
-          type();
-        }
-
-        function cycleText() {
-          const newText = texts[currentTextIndex];
-          currentTextIndex = (currentTextIndex + 1) % texts.length;
-          typeAndEraseText(dynamicText, newText, () => {
-            setTimeout(cycleText, 500);
-          });
-        }
-
-        cycleText();
-
-        const menuItems = document.querySelectorAll(".menu-item");
-        const skillsContent = document.querySelector("#skills .content");
-
-        menuItems.forEach((item) => {
-          item.addEventListener("click", () => {
-            menuItems.forEach((menu) => menu.classList.remove("active"));
-            item.classList.add("active");
-            skillsContent.textContent = item.getAttribute("data-content");
-          });
-        });
-
-        // Update vertical progress bar on scroll
-        window.addEventListener("scroll", () => {
-          const docHeight =
-            document.documentElement.scrollHeight - window.innerHeight;
-          const scrollPosition = window.scrollY;
-          const progressPercentage = (scrollPosition / docHeight) * 100;
-          document.getElementById(
-            "progress"
-          ).style.height = `${progressPercentage}%`;
-        });
-      });
-    </script>
+    <script src="script.js"></script>
   </body>
 </html>
