@@ -43,7 +43,7 @@
 /* Source Serif Pro - Bold */
 @font-face {
   font-family: "Source Serif Pro";
-  src: url("/assets/fonts/sourceserifpro/sourceserifpro/static/SourceSerif4_18pt-MediumItalic.ttf")
+  src: url("/assets/fonts/sourceserifpro/sourceserifpro/static/SourceSerif4_18pt-Bold.ttf")
     format("truetype");
   font-weight: 700;
   font-style: normal;
@@ -52,7 +52,7 @@
 /* Source Serif Pro - Italic */
 @font-face {
   font-family: "Source Serif Pro";
-  src: url("/assets/fonts/sourceserifpro/sourceserifpro/static/SourceSerif4_18pt-Bold.ttf")
+  src: url("/assets/fonts/sourceserifpro/sourceserifpro/static/SourceSerif4_18pt-Italic.ttf")
     format("truetype");
   font-weight: 400;
   font-style: italic;
@@ -62,7 +62,7 @@ body {
   font-family: "DM Sans", sans-serif;
   font-weight: 400;
   /* background-color: #f4f4f4; */
-  background-color: lightgray;
+  background-color: #edede9;
   color: #333;
   display: flex;
   flex-direction: column;
@@ -156,24 +156,116 @@ section {
 #homelab-blog {
   width: 100%;
   padding: 60px 100px;
-  /* background-color: #f9f9f9; */
-  /* text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center; */
 }
 
 #experience {
-  background-color: #f9f9f9;
+  padding: 60px 100px;
+  text-align: left;
+}
+
+.experience-container {
+  margin-top: 0px;
+  display: flex;
+  align-items: stretch;
+  gap: 20px;
+  position: relative;
+}
+
+.vertical-divider {
+  width: 1px;
+  background-color: #ccc;
+  height: auto;
+  min-height: 100%;
+  align-self: stretch;
+}
+
+.experience-column {
+  flex: 1;
+}
+
+.experience-item {
+  margin-bottom: 2.5rem;
+}
+
+#experience h3 {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+  font-style: italic;
+  font-weight: 500;
+}
+
+#experience h4 {
+  font-size: 1.25rem;
+  margin-top: 1rem;
+  margin-bottom: 0.75rem;
+  font-weight: 500;
+}
+
+.experience-description {
+  margin: 0.5rem 0 1rem;
+  line-height: 1.6;
+}
+
+.experience-item ul {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+  list-style-type: disc;
+}
+
+.experience-item ul li {
+  margin-bottom: 0.5rem;
+}
+
+#experience strong {
+  font-weight: bold;
+  color: #000;
+}
+
+.experience-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.experience-header h4 {
+  margin: 0;
+  font-size: 1.75rem;
+  font-style: italic;
+}
+
+.experience-header p {
+  margin: 0;
+  font-size: 1rem;
+  text-align: right;
+}
+
+.exp-role {
+  display: inline-block;
+  background-color: #f0f0f0;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 1rem;
+  color: #333;
+  margin-top: 8px;
+}
+
+.tech-style {
+  font-style: italic;
+  font-size: 1rem;
 }
 
 #contact {
-  background-color: #f9f9f9;
+  /* background-color: #f9f9f9; */
   min-height: 50vh;
 }
 
-#homelab-blog h2 {
+#blog {
+  padding: 60px 100px;
+  background-color: #f9f9f9;
+}
+
+#blog h2 {
   font-size: 3rem;
   margin-bottom: 20px;
   color: #333;
@@ -187,11 +279,22 @@ section {
   gap: 20px;
   flex-wrap: wrap;
   width: 100%;
+  font-size: 2rem;
+}
+
+.blog-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  width: 100%;
 }
 
 .blog-description {
   flex: 1;
-  max-width: 600px;
+  /* max-width: 600px; */
   text-align: left;
 }
 
@@ -245,10 +348,12 @@ section {
 }
 
 #profile-img {
-  width: 250px;
-  height: 250px;
+  min-width: 250px;
+  min-height: 250px;
   border-radius: 50%;
-  border: 5px solid #007bff;
+  max-width: 50vw;
+  max-height: 50vh;
+  /* border: 5px solid #007bff; */
 }
 
 #scroll-progress {
@@ -330,7 +435,7 @@ ul li a:hover {
 #contact {
   padding: 60px 100px;
   text-align: left;
-  background-color: #f9f9f9;
+  /* background-color: #f9f9f9; */
 }
 
 #contact h2 {
@@ -366,10 +471,16 @@ ul li a:hover {
   color: #fff;
 }
 
+.contact-container {
+  justify-content: center;
+  align-items: start;
+}
+
 .contact-item a {
   text-decoration: none;
   color: #333;
   transition: color 0.3s ease;
+  font-style: italic;
 }
 
 .contact-item a:hover {
@@ -379,29 +490,210 @@ ul li a:hover {
 footer {
   background-color: #333;
   color: #fff;
-  padding: 20px;
+  padding: 20px 100px; /* 100px padding on left and right */
+}
+
+footer p {
+  margin-top: 10px;
+  font-size: 10px;
+  text-align: center;
 }
 
 footer ul {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly; /* Distributes space equally between items */
+  padding: 0;
+  margin: 0;
+  list-style: none;
 }
 
 footer ul li {
-  margin: 0 15px;
+  margin: 0; /* Removes additional margin for spacing */
 }
 
 footer ul li a {
   color: #fff;
   text-decoration: none;
+  display: flex;
+  align-items: center;
 }
 
 footer ul li a:hover {
   text-decoration: underline;
 }
 
+footer ul li i {
+  margin-right: 8px; /* Adds space between icon and text */
+}
+
+/* General styling for the projects section */
+#projects {
+  margin: 2rem 0;
+  font-family: Arial, sans-serif;
+}
+
+.project-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.project-item {
+  margin-bottom: 2.5rem;
+}
+
+.project-title {
+  display: block;
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+  text-decoration: none;
+  font-style: italic;
+}
+
+.project-title:hover {
+  color: #007bff;
+}
+
+.project-description {
+  margin: 0.5rem 0 1rem;
+  line-height: 1.6;
+}
+
+.project-tech,
+.project-features {
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+.project-item ul {
+  margin: 1rem 0;
+}
+
+.project-item ul li {
+  margin-bottom: 0.5rem;
+}
+
+.project-list hr {
+  border: none;
+  border-top: 1px solid grey;
+  color: grey;
+  background-color: black;
+  margin: 2rem 0; /* Adjust spacing around the divider */
+  width: 100%;
+}
+
+#resume {
+  min-height: auto; /* Allow the section to resize based on content */
+  height: auto; /* Ensure no explicit height is enforced */
+  padding: 60px 100px; /* Add some padding for spacing */
+  display: flex;
+  flex-direction: row; /* Stack content vertically */
+  align-items: center; /* Center align items */
+  justify-content: center; /* Center content */
+  background-color: #f9f9f9;
+  gap: 20px;
+  box-sizing: border-box; /* Include padding in height calculation */
+}
+
+#resume a {
+  display: flex;
+  flex-direction: row;
+  align-items: center; /* Vertically align the icon */
+  justify-content: center;
+  text-decoration: none; /* Remove underline from the link */
+}
+
+#resume a i {
+  font-size: 2rem; /* Icon size */
+  margin-bottom: 20px;
+  color: inherit; /* Inherit color from the parent */
+}
+
 /* Responsive Adjustments for Smaller Screens */
 @media (max-width: 768px) {
+  body {
+    overflow-y: scroll; /* Enable scrolling */
+  }
+
+  body::-webkit-scrollbar {
+    width: 0px;
+    height: 0px; /* Hide scrollbar */
+  }
+
+  #intro {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .left {
+    padding: 0;
+    margin: 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .left .dynamic-texts {
+    margin-left: 0;
+    font-size: 2rem;
+    width: fit-content;
+  }
+
+  .right {
+    order: -1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .dynamic-texts {
+    margin-left: 0;
+    font-size: 1.5rem;
+    width: fit-content;
+  }
+
+  .social-icons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  #profile-img {
+    width: 220px;
+    height: 220px;
+    margin-bottom: 20px;
+  }
+
+  section {
+    height: auto; /* Automatically adjust height based on content */
+    padding: 20px;
+  }
+
+  #skills {
+    padding: 20px;
+  }
+
+  .experience-container {
+    flex-direction: column; /* Stack columns vertically */
+    gap: 0; /* Remove gap between stacked columns */
+  }
+
+  #experience h2 {
+    text-align: center;
+  }
+
+  .vertical-divider {
+    display: none; /* Hide the vertical divider */
+  }
+
+  #projects ul ul {
+    margin-left: 20px;
+  }
+
   .blog-container {
     flex-direction: column;
     align-items: center;
@@ -424,6 +716,10 @@ footer ul li a:hover {
     background-color: #e0e0e0; /* Light gray placeholder background */
     display: block;
   }
+
+  #experience {
+    padding: 20px;
+  }
 }
 
 @media (min-width: 769px) {
@@ -433,44 +729,6 @@ footer ul li a:hover {
 
   .blog-image {
     order: 1; /* Make sure the image appears after the text on desktop */
-  }
-}
-
-/* Hide scrollbar entirely but allow scrolling on mobile screens */
-@media (max-width: 768px) {
-  body {
-    overflow-y: scroll; /* Enable scrolling */
-  }
-
-  body::-webkit-scrollbar {
-    width: 0px;
-    height: 0px; /* Hide scrollbar */
-  }
-
-  #intro {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
-
-  .right {
-    order: -1;
-  }
-
-  #profile-img {
-    width: 220px;
-    height: 220px;
-    margin-bottom: 20px;
-  }
-
-  section {
-    height: auto; /* Automatically adjust height based on content */
-    padding: 20px;
-  }
-
-  #projects ul ul {
-    margin-left: 20px;
   }
 }
 
@@ -490,32 +748,48 @@ footer ul li a:hover {
   }
 
   #name {
-    font-size: 1.5rem;
+    font-size: 3rem;
   }
 
   #dynamic-text {
-    font-size: 1rem;
+    font-size: 1.75rem;
   }
 
-  .experience-item h3,
-  .experience-item h4 {
-    font-size: 1rem;
+  #projects {
+    margin: 0;
   }
 
-  .experience-item p {
-    font-size: 0.8rem;
+  .project-item ul {
+    margin: 0;
   }
 
-  #projects ul li a {
+  /* #projects ul li a {
     font-size: 0.9rem;
+  } */
+
+  .project-tech {
+    font-style: italic;
   }
 
-  section {
-    height: auto; /* Dynamically adjust height */
+  #blog {
     padding: 20px;
   }
+  #contact {
+    padding: 20px;
+    height: auto;
 
-  #projects ul ul {
-    margin-left: 20px;
+    min-height: auto; /* Allow the section to resize based on content */
+    height: auto; /* Ensure no explicit height is enforced */
+
+    display: flex;
+
+    align-items: center; /* Center align items */
+    justify-content: center; /* Center content */
+
+    box-sizing: border-box; /* Include padding in height calculation */
+  }
+
+  footer {
+    padding: 20px;
   }
 }

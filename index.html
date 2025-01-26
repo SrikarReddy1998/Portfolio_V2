@@ -9,7 +9,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
-    <!-- Font Awesome CDN -->
+
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
       rel="stylesheet"
@@ -26,7 +26,7 @@
           I'm a
           <h2 id="dynamic-text"></h2>
         </div>
-        <!-- Social Icons Below Dynamic Text -->
+      
         <div class="social-icons">
           <a
             href="https://github.com/SrikarReddy1998"
@@ -48,61 +48,64 @@
         </div>
       </div>
       <div class="right">
-        <img src="profile.jpg" alt="Profile Picture" id="profile-img" />
+        <img src="./assets/images/srikar_img.jpg" alt="Profile Picture" id="profile-img" />
       </div>
     </section>
-
-    <!-- Second Section -->
     <section id="skills">
-      <h2>Skills</h2>
+      <h2>SKILLS</h2>
       <div class="skills-container">
         <div class="skills-category">
           <h3>Languages & Frameworks</h3>
           <ul>
-            <li>JavaScript (Node.js, Angular, React, Bun.js)</li>
+            <li>TypeScript (Angular, React, Next.js)</li>
+            <li>JavaScript (Node.js)</li>
+            <li>Dart (Flutter)</li>
+            
             <li>GoLang</li>
+            
+            <li>HTML, CSS, JS</li>
+            <li>ThreeJS</li>
+            <li>Python (NumPy, Sklearn, Matplotlib, Keras, TensorFlow, OpenCV, Machine Learning)</li>
+            <li>Flask</li>
+            <!-- <li>C</li>
+            <li>C++</li>
+            <li>Bash</li> -->
+            <li>React Native</li>
+            <!-- <li>C# (Dot Net Core)</li> -->
+            <li>YAML, JSON</li>
+            <li>Java</li>
             <li>C</li>
             <li>C++</li>
-            <li>HTML, CSS, EJS, Handlebars</li>
-            <li>Python (NumPy, Sklearn, Matplotlib, Machine Learning)</li>
-            <li>Java (Android, JPA)</li>
-            <li>Bash</li>
-            <li>React Native</li>
-            <li>C# (Dot Net Core)</li>
-            <li>YAML, JSON</li>
-            <li>TypeScript</li>
-            <li>Dart</li>
-            <li>Flask</li>
-            <li>ThreeJS</li>
-            <li>Flutter</li>
-          </ul>
+            </ul>
         </div>
         <div class="skills-category">
           <h3>Tools & Databases</h3>
           <ul>
             <li>NodeJS</li>
-            <li>MongoDB</li>
             <li>Express</li>
             <li>MySQL</li>
+            <li>MongoDB</li>          
             <li>Redis</li>
+            <li>Elastic Search</li>
             <li>Firebase</li>
+            <li>PostgreSQL</li>
             <li>Web Sockets</li>
             <li>Git & Github</li>
             <li>GitHub Actions</li>
             <li>Jira, Confluence</li>
             <li>Postman</li>
-            <li>VSCode, CLion, IntelliJ IDEA, PyCharm</li>
-            <li>SSH, SCP, Systemd, etc.</li>
+            <li>VSCode, Android Studios, IntelliJ IDEA, PyCharm</li>
+            <li>SSH, SCP.</li>
           </ul>
         </div>
         <div class="skills-category">
           <h3>Cloud Technologies</h3>
           <ul>
-            <li>Linux (Ubuntu, Fedora, RHEL, Debian)</li>
+            <li>Linux (Ubuntu Server, Fedora, Debian)</li>
             <li>
               AWS (EC2, S3, IAM, ECS, RDS, Lambda, ALB, CloudWatch, CloudFront)
             </li>
-            <li>GCP (Cloud Functions, Cloud Storage, Cloud Runner)</li>
+            <!-- <li>GCP (Cloud Functions, Cloud Storage, Cloud Runner)</li> -->
             <li>Docker, Docker Compose, Kubernetes</li>
             <li>Microservices, Event Brokers (MQTT, Kafka)</li>
             <li>Nginx</li>
@@ -118,227 +121,280 @@
           </ul>
         </div>
       </div>
-    </section>
-
+    </section>    
     <section id="projects">
-      <h2>Projects</h2>
-      <ul>
-        <li>
-          <a href="https://medsync.srikarreddy.xyz" target="_blank">
-            <strong style="color: #007bff">Medsync Care</strong>
+      <h2>PROJECTS</h2>
+      <ul class="project-list">
+        <li class="project-item">
+          <a
+            href="https://medsync.srikarreddy.xyz"
+            target="_blank"
+            class="project-title"
+          >
+            <strong>Medsync Care</strong>
           </a>
-          <p>
-            An open-source healthcare management system designed to streamline
-            the process of scheduling, tracking, and managing medical
-            appointments. It simplifies healthcare workflows for both patients
-            and providers, offering a user-friendly interface and modern
-            functionality.
+          <p class="project-description">
+            MedSync Care is a comprehensive healthcare management platform designed to assist caretakers, patients, and healthcare professionals in managing and tracking medication schedules, prescriptions, and medical reports. Our platform ensures timely medication for patients and efficient care coordination.
           </p>
-          <p>
-            <strong style="color: #28a745">Tech used:</strong> React, Node.js,
-            Express, MongoDB
+          <p class="project-key-features">
+            <strong>Key Features:</strong>
+            <ul>
+              <li>Automated notifications and logging for medication schedules.</li>
+              <li>Role-based access control for coordinated care.</li>
+              <li>Secure storage and renewal reminders for prescriptions.</li>
+              <li>Centralized and secure storage for medical reports.</li>
+              <li>Tools to track and analyze medication adherence.</li>
+              <li>Automated alerts for missed medications and emergencies.</li>
+            </ul>
+          </p>
+          <p class="project-tech">
+            <strong>Tech used:</strong> React, ShadCN, Vite, Node.js, Express, MongoDB, MySQL, Kubernetes, Nginx, Docker, Docker-Compose, Github Actions(CI/CD)
           </p>
         </li>
-
-        <li>
-          <a href="#" target="_blank">
-            <strong style="color: #007bff"
-              >Homelab Setup with Raspberry Pi</strong
-            >
+        <hr />
+        <li class="project-item">
+          <a href="https://github.com/SrikarReddy1998" target="_blank" class="project-title">
+            <strong>Homelab Setup with Raspberry Pi</strong>
           </a>
-          <p>
-            Set up a secure homelab using Raspberry Pi, employing Twingate to
-            enable remote access without the need for a VPN. Integrated the QUIK
-            protocol for efficient user access control, ensuring a seamless and
-            secure setup for hosting personal projects.
+          <p class="project-description">
+            Set up a secure homelab using Raspberry Pi, employing Twingate to enable remote access without the need for a VPN. Integrated the QUIK protocol for efficient user access control, ensuring a seamless and secure setup for hosting personal projects.
           </p>
-          <p>
-            <strong style="color: #28a745">Tech used:</strong> Raspberry Pi,
-            Twingate, QUIK Protocol, Docker
+          <p class="project-key-features">
+            <strong>Key Features:</strong>
+            <ul>
+              <li>Serves as a registration point for Connectors, enabling secure initialization and connection.</li>
+              <li>Registers hash-based Connector IDs to allow private and efficient connectivity without exposing network details.</li>
+              <li>Acts as a connection point for Clients to establish connections to Connectors.</li>
+              <li>Verifies legitimate Client requests and connects them directly to the requested Connector.</li>
+              <li>Establishes secure, certificate-pinned TLS tunnels without storing or exposing network information.</li>
+            </ul>
+          </p>
+          <p class="project-tech">
+            <strong>Tech used:</strong> Raspberry Pi, Python, Twingate, QUIK Protocol, Docker
           </p>
         </li>
-
-        <li>
-          <a href="#" target="_blank">
-            <strong style="color: #007bff"
-              >Micro Frontend with Module Federation</strong
-            >
+        <hr />
+        <li class="project-item">
+          <a href="https://github.com/SrikarReddy1998/vite_moduleFederation" target="_blank" class="project-title">
+            <strong>Micro Frontends: Implementing Polyglot</strong>
           </a>
-          <p>
-            Implemented a Micro Frontend architecture to integrate Angular
-            (using Module Federation) and React frameworks (using Native
-            Federation) into a legacy application. This approach enabled better
-            runtime dependency sharing, reduced bundle sizes, and improved
-            scalability for enterprise applications.
+          <p class="project-description">
+            Implemented a Micro Frontend architecture to integrate Angular (using Module Federation) and React frameworks (using Native Federation) into a legacy application. This approach enabled better runtime dependency sharing, reduced bundle sizes, and improved scalability for enterprise applications.
           </p>
-          <p><strong style="color: #28a745">Key Features:</strong></p>
-          <ul>
-            <li>Optimized performance with reduced build sizes.</li>
-            <li>
-              Improved runtime sharing of dependencies between Angular and
-              React.
-            </li>
-            <li>
-              Enhanced scalability and modular maintainability for
-              enterprise-scale systems.
-            </li>
-          </ul>
-          <p>
-            <strong style="color: #28a745">Tech used:</strong> Angular, React,
-            Webpack Module Federation
+          <p class="project-key-features">
+            <strong>Key Features:</strong>
+            <ul>
+              <li>Optimized performance with reduced build sizes by 60%.</li>
+              <li>Improved runtime sharing of dependencies between Angular and React federations.</li>
+              <li>Enhanced scalability and modular maintainability for enterprise-scale systems.</li>
+            </ul>
+          </p>
+          <p class="project-tech">
+            <strong>Tech used:</strong> Angular, React, Webpack Module Federation, Vite Native Federation
           </p>
         </li>
-
-        <li>
-          <a href="#" target="_blank">
-            <strong style="color: #007bff">Dynamic DNS Updater</strong>
+        <hr />
+        <li class="project-item">
+          <a href="https://github.com/SrikarReddy1998" target="_blank" class="project-title">
+            <strong>Dynamic DNS Updater</strong>
           </a>
-          <p>
-            Developed a system that automatically updates a Dynamic DNS (DDNS)
-            record whenever the public IP address changes. Ensured uninterrupted
-            access to services hosted on a dynamic IP setup with efficient error
-            handling and automated retries.
+          <p class="project-description">
+            Developed a system that automatically updates a Dynamic DNS (DDNS) record whenever the public IP address changes. Ensured uninterrupted access to services hosted on a dynamic IP setup with efficient error handling and automated retries.
           </p>
-          <p><strong style="color: #28a745">Key Features:</strong></p>
+          <p class="project-key-features">
+            <strong>Key Features:</strong>
+          </p>
           <ul>
             <li>Periodic polling to detect changes in external IP address.</li>
             <li>Automated updates to DNS provider via API calls.</li>
-            <li>
-              Robust error handling and retry mechanisms for seamless operation.
-            </li>
+            <li>Robust error handling and retry mechanisms for seamless operation.</li>
           </ul>
-          <p>
-            <strong style="color: #28a745">Tech used:</strong> Python, REST
-            APIs, Bash, Cron Jobs
+          <p class="project-tech">
+            <strong>Tech used:</strong> Python, REST APIs, Bash, Cron Jobs
           </p>
         </li>
-
-        <li>
-          <a href="#" target="_blank">
-            <strong style="color: #007bff"
-              >Tactile Code Predictor using SVM and KNN Algorithm</strong
-            >
+        <hr />
+      <li class="project-item">
+          <a href="https://www.researchgate.net/publication/353514662_Sentimental_Analysis_using_Logistic_Regression" target="_blank" class="project-title">
+            <strong>Sentimental Analysis using Logistic Regression</strong>
           </a>
-          <p>
-            Designed tactile code recognition models using SVM and KNN,
-            leveraging Kaggle datasets and real-life tactile images for
-            training. The project aims to enhance communication for visually
-            impaired individuals, enabling interpretation of tactile signs for
-            those unfamiliar with ASL.
+          <p class="project-description">
+            Sentiment analysis can be used to analyze web material from social media platforms, online products, companies, events, and personnel. It employs a variety of methodologies to determine a text's or sentence's sentiment. This project focuses on applying logistic regression for effective accuracy and predicting whether given reviews are positive or negative. Using natural language processing, we analyzed product reviews efficiently and achieved a high accuracy of 94% with the Logistic Regression Grid Search Model.
           </p>
-          <p>
-            <strong style="color: #28a745">Tech used:</strong> Python,
-            TensorFlow, MongoDB, Keras, SciKit-Learn, OpenCV, Matplotlib, Pandas
+          <p class="project-key-features">
+            <strong>Key Features:</strong>
+            <ul>
+              <li>Automatically classifies feedback into positive and negative sentiments.</li>
+              <li>Uses Logistic Regression with grid search for improved accuracy.</li>
+              <li>Analyzes large datasets of product reviews using natural language processing techniques.</li>
+              <li>Provides actionable insights to businesses for improving products and optimizing marketing strategies.</li>
+              <li>Facilitates intelligent systems to summarize product reviews effectively.</li>
+            </ul>
+          </p>
+          <p class="project-tech">
+            <strong>Tech used:</strong> Python, TensorFlow, SK-Learn, Keras, Matplotlib, Pandas
           </p>
         </li>
-
-        <li>
-          <a href="#" target="_blank">
-            <strong style="color: #007bff"
-              >Sentimental Analysis using Logistic Regression</strong
-            >
+        <hr />
+        <li class="project-item">
+          <a href="https://github.com/SrikarReddy1998" target="_blank" class="project-title">
+            <strong>Tactile Code Predictor using SVM and KNN Algorithm</strong>
           </a>
-          <p>
-            Conducted sentiment analysis of text data to determine emotional
-            tones within written statements. Trained models using a
-            dictionary-based clustering technique and published findings in
-            IJERA.
+          <p class="project-description">
+            Designed tactile code recognition models using SVM and KNN, leveraging Kaggle datasets and real-life tactile images for training. The project aims to enhance communication for visually impaired individuals, enabling interpretation of tactile signs for those unfamiliar with ASL.
           </p>
-          <p>
-            <strong style="color: #28a745">Tech used:</strong> Python,
-            TensorFlow, SK-Learn, Keras, Matplotlib, Pandas
+          <p class="project-key-features">
+            <strong>Key Features:</strong>
+            <ul>
+              <li>Developed SVM and KNN models for efficient tactile code recognition.</li>
+              <li>Utilized Kaggle datasets and real-life tactile images for model training.</li>
+              <li>Enhanced accessibility for visually impaired individuals by interpreting tactile signs.</li>
+              <li>Implemented real-time image processing for accurate tactile code prediction.</li>
+              <li>Focused on bridging communication gaps for users unfamiliar with ASL.</li>
+            </ul>
+          </p>
+          <p class="project-tech">
+            <strong>Tech used:</strong> Python, TensorFlow, MongoDB, Keras, SciKit-Learn, OpenCV, Matplotlib, Pandas
           </p>
         </li>
-
-        <li>
-          <a href="#" target="_blank">
-            <strong style="color: #007bff"
-              >Smart Phone Manufacturer System</strong
-            >
+        <hr />
+ <li class="project-item">
+          <a href="https://github.com/SrikarReddy1998" target="_blank" class="project-title">
+            <strong>Smart Phone Manufacturer System</strong>
           </a>
-          <p>
-            Developed an Android and web-based application that provides
-            detailed information on mobile phones, including manufacturing
-            details, seller information, and specifications. Delivered a
-            comprehensive tool for accessing smartphone data efficiently.
+          <p class="project-description">
+            Developed an Android and web-based application that provides detailed information on mobile phones, including manufacturing details, seller information, and specifications. Delivered a comprehensive tool for accessing smartphone data efficiently.
           </p>
-          <p>
-            <strong style="color: #28a745">Tech used:</strong> Flutter, Dart,
-            Node.js, Express, GetX Architecture
+          <p class="project-key-features">
+            <strong>Key Features:</strong>
+            <ul>
+              <li>Centralized database for storing detailed smartphone information.</li>
+              <li>Interactive UI for browsing mobile phone specifications and manufacturing details.</li>
+              <li>Real-time synchronization between Android and web platforms.</li>
+              <li>Role-based access for manufacturers and sellers to manage their products.</li>
+              <li>Efficient search and filter options for quick access to desired smartphone data.</li>
+              <li>Integrated with GetX architecture for state management and seamless user experience.</li>
+            </ul>
+          </p>
+          <p class="project-tech">
+            <strong>Tech used:</strong> Flutter, Dart, Node.js, Express, GetX Architecture
           </p>
         </li>
+        
       </ul>
     </section>
-
+    <section id="resume">
+      <h2>RESUME</h2>
+      <a href="./assets/docs/Srikar Reddy Resume.pdf" download>
+        <i class="fas fa-download" ></i> <!-- Download icon -->
+      </a>
+    </section>
+    
+    
+    
+    
     <section id="experience">
-      <h2>Experience</h2>
-      <div class="experience-item">
-        <h3>Reliance Jio (June 2022 – Present)</h3>
-        <p><strong>Role:</strong> Software Developer</p>
-        <div>
-          <h4>Project - People First v2 (Internal HR Platform Revamp)</h4>
-          <p>
-            An all-in-one HR platform for Reliance Industries (including Retail,
-            Hydrocarbons, JIO), using microfront-end technology with Module
-            Federation. It's containerized to optimize various employee needs
-            like travel, payroll, leave management, approvals, reimbursements,
-            self-service, and more.
-          </p>
-          <p>
-            <strong>Tech Used:</strong> Angular 16, React, Redux, TypeScript,
-            Node.js, Express, Kubernetes, Docker, Jenkins, Module Federation -
-            Web Architecture, SonarQube.
-          </p>
-          <p><strong>Role:</strong> Module Lead, Mentor (Team Size: 18)</p>
+      <h2>PROFESSIONAL EXPERIENCE</h2>
+      <div class="experience-container">
+        <div class="experience-column">
+          <div class="experience-item">
+            <h3>Reliance Jio (June 2022 – Present)</h3>
+            <div class="exp-role">
+              Software Developer
+            </div>
+            <div>
+              <div class="experience-header">
+                <h4>HRBuddy (Chatbot for HR Activities)</h4>
+                <p>Lead Developer (Team Size: 8)</p>
+              </div>
+              <p>
+                Designed and developed HRBuddy, a chatbot embedded via iframe, enabling over 
+                <strong>350,000+ employees</strong> to access HR activities and employee requirements through a single interface. 
+                This innovation reduced HR query resolution time by <strong>30%</strong> and enhanced employee satisfaction on a concurrent basis.
+              </p>
+              <ul>
+                <li>Real-time query resolution through Next.js SSR.</li>
+                <li>Improved accessibility for payroll, benefits, and leave management.</li>
+                <li>Scalable to handle concurrent usage by thousands of employees.</li>
+              </ul>
+              <p>Tech Used: <span class="tech-style">Typescript, Next.js, Node.js, MongoDB, Redis, Docker, Nginx, Kubernetes.</span> </p>
+            </div>
+          </div>
+          
+          
+          <div class="experience-item">
+            <div class="experience-header">
+              <h4>PeopleFirst V2 (HR Platform Revamp)</h4>
+              <p>Modules Lead, Mentor (Team Size: 18)</p>
+            </div>
+       
+            <p>
+              Led the revamp of the People First HR platform for <strong>Reliance Industries</strong>, leveraging microfront-end 
+              technology to optimize various employee services for <strong>250,000+ users</strong>. Delivered a <strong>20% 
+              improvement</strong> in platform efficiency and ensured 99.9% uptime.
+            </p>
+            <ul>
+              <li>Implemented microfront-end architecture with Module Federation.</li>
+              <li>Streamlined HR processes including travel, payroll, and approvals.</li>
+              <li>Ensured platform scalability and fault tolerance with Kubernetes.</li>
+            </ul>
+            
+            <p>Tech Used: <span class="tech-style">Angular 16, React, Redux, TypeScript, Node.js, Express, Kubernetes, Docker, Jenkins, SonarQube.</span> </p>
+          </div>
         </div>
-        <div>
-          <h4>Project - Sustainability First (BRSR Report)</h4>
-          <p>
-            An internal tool used by Reliance subsidiaries to manage and
-            aggregate sustainable goals. It helps track key metrics like stock
-            performance, employee count, gender representation, and
-            environmental risks. Subsidiaries input quarterly data, which
-            Organizational managers review and finalize before being sent to
-            SEBI at the end of the financial year. The tool ensures transparency
-            and stakeholder interests are addressed.
-          </p>
-          <p>
-            <strong>Tech Used:</strong> AngularJS, HTML, Node.js, Express,
-            SonarQube, Jenkins in Microfront-end Architecture.
-          </p>
-          <p><strong>Role:</strong> Member (Team Size: 10)</p>
-        </div>
-        <div>
-          <h4>Project - People First v1 (HR Platform) - Android & iOS</h4>
-          <p>
-            A Flutter-based mobile app using GetX architecture that meets all
-            employees' HR needs. It includes modules for benefits, travel,
-            guesthouse bookings, payroll, and approvals, making it easy for
-            employees to access necessary resources. The app also provides push
-            notifications for attendance reminders and updates on organizational
-            news.
-          </p>
-          <p><strong>Tech Used:</strong> Flutter, Dart, Node.js, Express.</p>
-          <p><strong>Role:</strong> Graduate Engineering Trainee</p>
-        </div>
-      </div>
+    
+        <div class="vertical-divider"></div>
+    
+        <div class="experience-column">
+          <div class="exp-role">
+            Graduate Engineering Trainee
+          </div>
+          <div class="experience-item">
+            <div class="experience-header">
+              <h4> Sustainability First (BRSR Report)</h4>
+              <p>Developer (Team Size: 10)</p>
+            </div>
+         
+            <p>
+              Developed an internal tool for managing sustainability goals across <strong>multiple subsidiaries</strong> of Reliance. 
+              Facilitated the aggregation of key metrics and ensured compliance with SEBI regulations, reducing report preparation time by <strong>25%</strong>.
+            </p>
+            <ul>
+              <li>Quarterly data input and validation by organizational managers.</li>
+              <li>Real-time tracking of environmental risks and stock performance.</li>
+              <li>Integrated approval workflows for seamless submissions.</li>
+            </ul>
+           
+            <p>Tech Used: <span class="tech-style">AngularJS, HTML, Node.js, Express, Jenkins, SonarQube.</span> </p>
+          </div>
+          <div class="experience-item">
+            <div class="experience-header">
+              <h4>People First V1 (HR Platform) - Android & IOS</h4>
+              <p>Developer (Team Size: 18)</p>
+            </div>
+           
+            <p>
+              Built a Flutter-based mobile app serving as a comprehensive HR solution for employees, enabling easy access to payroll, 
+              benefits, and approvals. Achieved <strong>98%</strong> adoption rate across the organization and enhanced user engagement with push notifications.
+            </p>
+            <ul>
+              <li>GetX architecture for seamless state management.</li>
+              <li>Modules for benefits, travel, and guesthouse bookings.</li>
+              <li>Push notifications for attendance reminders and updates.</li>
+            </ul>
 
-      <div class="experience-item">
-        <h3>HRBuddy (Personal Project)</h3>
-        <p>
-          Developed a chatbot using Next.js SSR, embedded via iframe, which
-          allows users to access all HR activities and employee requirements
-          through a single chat interface. The chatbot simplifies employee
-          interactions with HR services, improving efficiency and user
-          experience.
-        </p>
+            <p>Tech Used: <span class="tech-style">Flutter, Dart, Node.js, Express.</span> </p>
+         
+          </div>
+        </div>
       </div>
     </section>
-
-    <!-- Fourth Section -->
-    <section id="homelab-blog">
-      <h2>My Blog: Building a Secure Homelab with Twingate</h2>
+    <section id="blog">
+      <h2>MY BLOG</h2>
+      
       <div class="blog-container">
+        <div class="blog-header">Building a Secure Homelab with Twingate</div>
+         <div class="blog-content">
         <div class="blog-image">
           <img
             src="https://via.placeholder.com/400x300"
@@ -347,45 +403,34 @@
         </div>
         <div class="blog-description">
           <p>
-            Setting up a homelab is an exciting way to explore and learn about
-            technology. In my latest blog, I dive deep into building a secure
-            and efficient homelab using Twingate. This guide walks you through
-            the process of enabling remote access without relying on traditional
-            VPNs, ensuring security and simplicity.
+            Setting up a homelab is an exciting way to explore and learn about technology. In my latest blog, I dive deep into building a secure and efficient homelab using Twingate. This guide walks you through the process of enabling remote access without relying on traditional VPNs, ensuring security and simplicity.
           </p>
           <p>
-            Discover how to configure Twingate, manage access controls using the
-            QUIK protocol, and leverage a Raspberry Pi for the ultimate
-            lightweight and cost-effective server. Learn how this setup allows
-            seamless access to services while prioritizing user management and
-            scalability.
+            Discover how to configure Twingate, manage access controls using the QUIK protocol, and leverage a Raspberry Pi for the ultimate lightweight and cost-effective server. Learn how this setup allows seamless access to services while prioritizing user management and scalability.
           </p>
           <p>
             <a
               href="https://hashnode.com/@SrikarReddy"
               target="_blank"
               class="blog-link"
-              >Read the full blog →</a
-            >
+            >Read the full blog →</a>
           </p>
         </div>
+        </div>
       </div>
-    </section>
-
-    <!-- Fifth Section -->
+    </section> 
     <section id="contact">
-      <h2>Contact Information</h2>
+      <h2>CONTACT INFORMATION</h2>
+      <div class="contact-container">
       <div class="contact-item">
-        <i class="fas fa-envelope"></i>
-        <a href="mailto:sr@srikarreddy.xyz">sr@srikarreddy.xyz</a>
+        <i href="mailto:sr@srikarreddy.xyz,master.srikarreddy@gmail.com" class="fas fa-envelope"></i>
+        <a href="mailto:sr@srikarreddy.xyz,master.srikarreddy@gmail.com">sr@srikarreddy.xyz</a>
       </div>
       <div class="contact-item">
-        <i class="fas fa-phone"></i>
+        <i href="tel:+919515885446" class="fas fa-phone"></i>
         <a href="tel:+919515885446">+91 9515885446</a>
-      </div>
+      </div></div>
     </section>
-
-    <!-- Footer -->
     <footer>
       <ul>
         <li>
@@ -410,8 +455,8 @@
         </li>
         <!-- Book Icon for Blog -->
       </ul>
+      <p>© 2024 Srikar Reddy</p>
     </footer>
-
     <script src="script.js"></script>
   </body>
 </html>
