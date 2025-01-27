@@ -7,7 +7,7 @@
 /* DM Sans - Regular */
 @font-face {
   font-family: "DM Sans";
-  src: url("/assets/fonts/dmsans/dmsans/static/DMSans_18pt-Medium.ttf")
+  src: url("/assets/fonts/dmsans/static/DMSans_18pt-Medium.ttf")
     format("truetype");
   font-weight: 400;
   font-style: normal;
@@ -16,7 +16,7 @@
 /* DM Sans - Italic */
 @font-face {
   font-family: "DM Sans";
-  src: url("/assets/fonts/dmsans/dmsans/static/DMSans_18pt-MediumItalic.ttf")
+  src: url("/assets/fonts/dmsans/static/DMSans_18pt-MediumItalic.ttf")
     format("truetype");
   font-weight: 400;
   font-style: italic;
@@ -25,7 +25,7 @@
 /* DM Sans - Bold */
 @font-face {
   font-family: "DM Sans";
-  src: url("/assets/fonts/dmsans/dmsans/static/DMSans_18pt-Bold.ttf")
+  src: url("/assets/fonts/dmsans/static/DMSans_18pt-Bold.ttf")
     format("truetype");
   font-weight: 700;
   font-style: normal;
@@ -34,7 +34,7 @@
 /* Source Serif Pro - Regular */
 @font-face {
   font-family: "Source Serif Pro";
-  src: url("/assets/fonts/sourceserifpro/sourceserifpro/static/SourceSerif4_18pt-Medium.ttf")
+  src: url("/assets/fonts/sourceserifpro/static/SourceSerif4_18pt-Medium.ttf")
     format("truetype");
   font-weight: 400;
   font-style: normal;
@@ -43,7 +43,7 @@
 /* Source Serif Pro - Bold */
 @font-face {
   font-family: "Source Serif Pro";
-  src: url("/assets/fonts/sourceserifpro/sourceserifpro/static/SourceSerif4_18pt-Bold.ttf")
+  src: url("/assets/fonts/sourceserifpro/static/SourceSerif4_18pt-Bold.ttf")
     format("truetype");
   font-weight: 700;
   font-style: normal;
@@ -52,7 +52,7 @@
 /* Source Serif Pro - Italic */
 @font-face {
   font-family: "Source Serif Pro";
-  src: url("/assets/fonts/sourceserifpro/sourceserifpro/static/SourceSerif4_18pt-Italic.ttf")
+  src: url("/assets/fonts/sourceserifpro/static/SourceSerif4_18pt-Italic.ttf")
     format("truetype");
   font-weight: 400;
   font-style: italic;
